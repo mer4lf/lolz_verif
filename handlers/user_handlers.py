@@ -17,7 +17,6 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from state.UserStates import UserState
 from utils.utils import is_card, MoneyWays, Ways, ProjectTypes, export_tags
 
-DATABASE_URL = "postgresql+asyncpg://postgres:1111@localhost/lolz_books"
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -28,6 +27,7 @@ bot: Bot = Bot(token=config.tg_bot.token)
 dp: Dispatcher = Dispatcher(storage=storage)
 kb = UserKeyboards()
 
+DATABASE_URL = f"postgresql+asyncpg://{config.db.db_user}:{config.db.db_password}@{config.db.db_host}/{config.db.database}"
 
 @router.message(Command('menu'))
 async def menu_command(message: Message, state: FSMContext):
