@@ -4,16 +4,16 @@ from environs import Env
 
 @dataclass
 class DatabaseConfig:
-    database: str  # �^}азвание баз�^k данн�^k�^e
-    db_host: str  # URL-ад�^`е�^a баз�^k данн�^k�^e
-    db_user: str  # Username пол�^lзова�^bел�^o баз�^k данн�^k�^e
-    db_password: str  # �^=а�^`ол�^l к базе данн�^k�^e
+    database: str  
+    db_host: str  
+    db_user: str  
+    db_password: str 
 
 
 @dataclass
 class TgBot:
-    token: str  # Токен дл�^o до�^a�^b�^cпа к �^bелег�^`ам-бо�^b�^c
-    admin_ids: list[int]  # Спи�^aок id админи�^a�^b�^`а�^bо�^`ов бо�^bа
+    token: str 
+
 
 
 
@@ -30,8 +30,7 @@ def load_config(path: str | None) -> Config:
 
     return Config(
         tg_bot=TgBot(
-            token=env('BOT_TOKEN'),
-            admin_ids=list(map(int, env.list('ADMIN_IDS')))),
+            token=env('BOT_TOKEN')),
         db=DatabaseConfig(
             database=env('DATABASE'),
             db_host=env('DB_HOST'),
