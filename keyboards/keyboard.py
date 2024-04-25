@@ -6,8 +6,11 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from database.AsyncDatabase import DataBase
 from lexicon.lexicon import LEXICON_RU
 from utils.utils import deals_per_page
+from config_data.config import Config, load_config
 
-DATABASE_URL = "postgresql+asyncpg://postgres:1111@localhost/lolz_books"
+config: Config = load_config('.env')
+
+DATABASE_URL = f"postgresql+asyncpg://{config.db.db_user}:{config.db.db_password}@{config.db.db_host}/{config.db.database}"
 
 db = DataBase(DATABASE_URL)
 
