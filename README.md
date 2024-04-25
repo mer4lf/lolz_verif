@@ -1,7 +1,3 @@
-Great! Based on the information provided, here's a draft of your README file for the project "lolz verif":
-
----
-
 # lolz verif
 
 ## Project Description
