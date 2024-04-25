@@ -13,7 +13,7 @@ from state.UserStates import UserState
 
 config: Config = load_config('.env')
 
-DATABASE_URL = "postgresql+asyncpg://postgres:1111@localhost/lolz_books"
+DATABASE_URL = f"postgresql+asyncpg://{config.db.db_user}:{config.db.db_password}@{config.db.db_host}/{config.db.database}"
 # Инициализируем роутер уровня модуля
 router: Router = Router()
 db = DataBase(DATABASE_URL)
