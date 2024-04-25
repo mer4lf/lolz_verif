@@ -13,11 +13,12 @@ from handlers import start_handlers, user_handlers
 
 storage = MemoryStorage()
 
-DATABASE_URL = "postgresql+asyncpg://postgres:1111@localhost/lolz_books"
 
 logging.basicConfig(level=logging.INFO)
 # Загружаем конфиг в переменную config
 config: Config = load_config('.env')
+
+DATABASE_URL = f"postgresql+asyncpg://{config.db.db_user}:{config.db.db_password}@{config.db.db_host}/{config.db.database}"
 
 # Инициализируем бот и диспетчер
 bots: Bot = Bot(token=config.tg_bot.token)
